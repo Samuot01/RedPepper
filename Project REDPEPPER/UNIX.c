@@ -10,6 +10,7 @@
     void msleep(int ms);
 
     #define getcharacter getchar_clear
+    #define clearconsole system("clear");
 
 #elif defined(_WIN32) || defined(_WIN64)
     #include <Windows.h>
@@ -17,6 +18,7 @@
     #define msleep Sleep
     #define is_press kbhit
     #define getcharacter getch
+    #define clearconsole system("cls");
 #endif
 
  char getchar_clear();

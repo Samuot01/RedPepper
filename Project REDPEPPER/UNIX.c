@@ -6,10 +6,11 @@
     #include <termios.h>
     #include <sys/ioctl.h>
     #include <fcntl.h>
+    char onechar();
     int is_press();
     void msleep(int ms);
 
-    #define getcharacter getchar_clear
+    #define getcharacter onechar
     #define clearconsole system("clear");
 
 #elif defined(_WIN32) || defined(_WIN64)
@@ -20,9 +21,6 @@
     #define getcharacter getch
     #define clearconsole system("cls");
 #endif
-
- char getchar_clear();
- void resize(unsigned int cols, unsigned int rows);
 
 #if defined(__unix__) || defined(__APPLE__)
     void resize(unsigned int cols, unsigned int rows){
@@ -40,7 +38,7 @@
         sprintf(cmd, "resize -s %u %u",cols,rows);
         system(cmd);
     }
-    int onechar(){
+    char onechar(){
         /*
             get a char without press enter
             @params{
@@ -49,29 +47,13 @@
             return int
             source: StackOverFlow
         */
-        struct termios oldt, newt;
-        int ch;
-        int oldf;
-
-        tcgetattr(STDIN_FILENO, &oldt);
-        newt = oldt;
-        newt.c_lflag &= ~(ICANON | ECHO);
-        tcsetattr(STDIN_FILENO, TCSANOW, &newt);
-        oldf = fcntl(STDIN_FILENO, F_GETFL, 0);
-        fcntl(STDIN_FILENO, F_SETFL, oldf | O_NONBLOCK);
-
+        char ch;
+        system("/bin/stty raw");
         ch = getchar();
+        system("/bin/stty cooked");
+        putchar('\b');
 
-        tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
-        fcntl(STDIN_FILENO, F_SETFL, oldf);
-
-        if(ch != EOF)
-        {
-            ungetc(ch, stdin);
-            return 1;
-        }
-
-        return 0;
+        return ch;
     }
 
     void msleep(int ms){
@@ -84,20 +66,6 @@
     	char c[20];
     	sprintf(c,"sleep %f",(float)ms/1000.0);
     	system(c);
-    }
-
-    char getchar_clear(){
-        /*
-            getchar that don't display the pressed char
-            @params{
-                void
-            }
-            return char;
-        */
-        char c;
-        c=getchar();
-        printf("\b\b\b\b\b");
-        return c;
     }
 
     int is_press(){
@@ -145,3 +113,17 @@
         system(cmd);
     }
 #endif
+
+char getchar_clear(){
+    /*
+        getchar that don't display the pressed char
+        @params{
+            void
+        }
+        return char;
+    */
+    char c;
+    c=getchar();
+    printf("\b\b\b\b\b");
+    return c;
+}

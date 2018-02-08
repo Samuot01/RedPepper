@@ -1,3 +1,5 @@
+#include "UNIX.c"
+
 void style(char parolina[]);                                //funzione che contiene la maggior parte del calcolo e degli stili, in oltre, contine lo switch del menu.
 int trova_p(char parolina[]);
 void style1();                                              //menu giocatore (grafica).
@@ -24,7 +26,7 @@ void gameover();
 void style(char parolina[]){
     int i,last,pos=0,nmos=0,ermos=0,flag,corret=0;        //ermos=error mosse ; nmos=numero mosse utilizzate ; t= serve solo per far fare un giro
     char operatore;
-    char conft[80];                                       //vettore di confronto: è il vettore appartenente all'utente in cui cerca di scovare la parola giusta tramite le opzioni del menu
+    char conft[80];                                       //vettore di confronto: ï¿½ il vettore appartenente all'utente in cui cerca di scovare la parola giusta tramite le opzioni del menu
 
 
     clearconsole
@@ -50,7 +52,7 @@ do{
 
     operatore=lettura_operatore();
 
-    switch (operatore) {                                //Menù giocatore
+    switch (operatore) {                                //Menï¿½ giocatore
 
         case '1':
                 flag=caso1(parolina,last,conft);
@@ -66,13 +68,13 @@ do{
 
                 if(corret==1){
                     ermos++;
-                    corret=deadpick_render(ermos);      //vede a che morte è arrivato l'utente e procede ,se necessario, alla chiusura del programma
+                    corret=deadpick_render(ermos);      //vede a che morte ï¿½ arrivato l'utente e procede ,se necessario, alla chiusura del programma
 
                 }else{
                     printf("\n\n\n\n");
                     printf("\n\t\t\t\t\t\t\t\t\t\t Complimenti! sei riuscito in %d mosse a scoprire la parola nascosta.",nmos);
                     msleep(2000);
-                    corret=1;                           //corret a 1 perchè è riuscito a finire il gioco e quindi fa finire il ciclo
+                    corret=1;                           //corret a 1 perchï¿½ ï¿½ riuscito a finire il gioco e quindi fa finire il ciclo
                 }
 
         break;
@@ -165,7 +167,7 @@ char lettura_operatore_nascosta(){
 char oper;
 
     printf("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t>>");
-    oper=getch();
+    oper=getcharacter();
 
 return oper;
 }

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 #include "fogliostile1.c"
-#include "UNIX.c"
 
 
 void multiplayer(char parolina[]);
@@ -70,7 +70,7 @@ int i,j;
     printf("\n\n\t\t\t\t\t\t\t\t\t\t\t\tInserisci parola da trovare: ");
     for(i=0;i<81;i++){
 
-        parolina[i]=getch();
+        parolina[i]=getcharacter();
 
             if(parolina[i]!=' '){
                 printf("*");
@@ -112,14 +112,3 @@ void singleplayer(char parolina[]){                 //Singleplayer= legge una pa
     fclose(fd);
 
 }
-
-
-
-
-
-
-
-
-
-
-

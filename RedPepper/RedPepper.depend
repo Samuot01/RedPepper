@@ -1,0 +1,55 @@
+# depslib dependency file v1.0
+1520235562 source:c:\users\samulot01\desktop\copia proj\fogliostile.c
+	"term_menu.h"
+
+1519072687 c:\users\samulot01\desktop\copia proj\unix.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<termios.h>
+	<sys/ioctl.h>
+	<fcntl.h>
+	<Windows.h>
+
+1519217097 source:c:\users\samulot01\desktop\copia proj\term_menu.c
+	"term_menu.h"
+
+1519074573 c:\users\samulot01\desktop\copia proj\term_menu.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<unistd.h>
+	<termios.h>
+	<sys/ioctl.h>
+	<fcntl.h>
+	<Windows.h>
+
+1520237621 source:c:\users\samulot01\desktop\copia proj\main.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	"term_menu.h"
+	"fogliostile.h"
+
+1519074034 c:\users\samulot01\desktop\copia proj\fogliostile.c
+	"term_menu.h"
+
+1519073181 c:\users\samulot01\desktop\copia proj\main.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	"term_menu.h"
+	"fogliostile.c"
+
+1519074130 c:\users\samulot01\desktop\copia proj\fogliostile.h
+
+1519068809 source:c:\users\samulot01\desktop\copia proj\unix.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<termios.h>
+	<sys/ioctl.h>
+	<fcntl.h>
+	<Windows.h>
+
